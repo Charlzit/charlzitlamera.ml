@@ -487,10 +487,10 @@
                                 <a href="https://web.facebook.com/soukuko.1" target="_blank">
                                     <i class="fab fa-facebook-f"></i>
                                 </a>
-                                <a href="#" target="_blank">
+                                <a href="https://twitter.com/charlzitlamera" target="_blank">
                                     <i class="fab fa-twitter"></i>
                                 </a>
-                                <a href="#" target="_blank">
+                                <a href="https://github.com/Charlzit" target="_blank">
                                     <i class="fab fa-github"></i>
                                 </a>
                                 <a href="#" target="_blank">
@@ -500,16 +500,16 @@
                         </div>
                     </div>
                     <div class="right-contact">
-                        <form action="" class="contact-form">
+                        <form action="./send.php" class="contact-form" method="post">
                             <div class="input-control i-c-2">
-                                <input type="text" required placeholder="YOUR NAME">
-                                <input type="email" required placeholder="YOUR EMAIL">
+                                <input name="name" type="text" required placeholder="YOUR NAME">
+                                <input name="email" type="email" required placeholder="YOUR EMAIL">
                             </div>
                             <div class="input-control">
-                                <input type="text" required placeholder="ENTER SUBJECT">
+                                <input name="subject" type="text" required placeholder="ENTER SUBJECT">
                             </div>
                             <div class="input-control">
-                                <textarea name="" id="" cols="15" rows="8" placeholder="Message Here..."></textarea>
+                                <textarea name="message" id="" cols="15" rows="8" placeholder="Message Here..."></textarea>
                             </div>
                             <div class="submit-btn">
                                 <a href="#" class="main-btn">
@@ -517,7 +517,7 @@
                                     <span class="btn-icon"><i class="fas fa-download"></i></span>
                                 </a>
                                 <div class="submit-btn">
-                                    <button type="submit" class="curved-button">Send Message</button>
+                                    <button name="send" type="submit" class="curved-button">Send Message</button>
                                 </div>
                                 
 
