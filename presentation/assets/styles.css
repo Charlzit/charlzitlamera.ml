@@ -1,0 +1,379 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap');
+
+:root {
+    --primary-color: #2c3e50;
+    --accent-color: #e74c3c;
+    --text-color: #2c3e50;
+    --light-color: #ecf0f1;
+    --dark-color: #34495e;
+    --gradient-1: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    --gradient-2: linear-gradient(135deg, #e74c3c 0%, #f39c12 100%);
+    --shadow-1: 0 4px 20px rgba(0, 0, 0, 0.1);
+    --shadow-2: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    background: var(--light-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow: hidden;
+}
+
+/* Grid Layouts */
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.content-columns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.issues-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.symbols-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.techniques-grid, .relevance-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.impact-sections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* Grid Items */
+.grid-item, .issue, .symbol, .technique, .relevance, .impact {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.grid-item:hover, .issue:hover, .symbol:hover, .technique:hover, .relevance:hover, .impact:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-2);
+}
+
+/* Presentation Structure */
+.presentation {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: var(--light-color);
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none;
+    padding: 2rem;
+    background-position: center;
+    background-size: cover;
+}
+
+.slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.95);
+    z-index: 0;
+}
+
+.slide.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: var(--shadow-2);
+    max-height: 90vh;
+    overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+    color: var(--primary-color);
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 2.8rem;
+    position: relative;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1rem;
+}
+
+h4 {
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+    color: var(--accent-color);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+h4 i {
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+/* Lists */
+ul {
+    list-style-type: none;
+    padding-left: 0.5rem;
+}
+
+li {
+    margin: 0.8rem 0;
+    font-size: 1.1rem;
+    padding: 0.8rem 1.2rem;
+    border-left: 4px solid var(--accent-color);
+    background: rgba(236, 240, 241, 0.5);
+    border-radius: 0 8px 8px 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+li ul {
+    margin-top: 0.8rem;
+}
+
+li ul li {
+    font-size: 1rem;
+    margin: 0.6rem 0;
+    padding: 0.6rem 1rem;
+    border-left: 3px solid var(--dark-color);
+    background: rgba(236, 240, 241, 0.3);
+}
+
+/* Title Slide */
+#title .slide-content {
+    text-align: center;
+    background: var(--gradient-1);
+    padding: 4rem;
+    color: white;
+    border: none;
+}
+
+#title h1 {
+    font-size: 5rem;
+    margin-bottom: 1.5rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    letter-spacing: 2px;
+}
+
+#title h3 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    font-weight: 300;
+    opacity: 0.9;
+    color: white;
+}
+
+#title .author {
+    font-size: 1.8rem;
+    opacity: 0.8;
+    margin-top: 2rem;
+    font-weight: 300;
+}
+
+#title .subtitle {
+    font-size: 1.4rem;
+    opacity: 0.7;
+    margin-top: 1rem;
+    font-style: italic;
+}
+
+/* Navigation */
+.controls {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1.2rem 2.5rem;
+    border-radius: 50px;
+    box-shadow: var(--shadow-2);
+    backdrop-filter: blur(10px);
+}
+
+button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 25px;
+    background: var(--gradient-1);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-1);
+    background: var(--gradient-2);
+}
+
+button i {
+    font-size: 0.9rem;
+}
+
+#slideCounter {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    min-width: 60px;
+    text-align: center;
+}
+
+/* Progress Bar */
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(236, 240, 241, 0.5);
+    z-index: 1000;
+}
+
+.progress {
+    height: 100%;
+    background: var(--accent-color);
+    width: 0;
+    transition: width 0.3s ease;
+}
+
+/* Decorative Elements */
+.title-decoration {
+    width: 100px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    margin: 2rem auto;
+    position: relative;
+}
+
+.title-decoration::before,
+.title-decoration::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    top: -2px;
+}
+
+.title-decoration::before {
+    left: 0;
+}
+
+.title-decoration::after {
+    right: 0;
+}
+
+/* Scrollbar */
+.slide-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.slide-content::-webkit-scrollbar-track {
+    background: rgba(236, 240, 241, 0.5);
+    border-radius: 4px;
+}
+
+.slide-content::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 4px;
+}
+
+.slide-content::-webkit-scrollbar-thumb:hover {
+    background: var(--dark-color);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content-columns {
+        grid-template-columns: 1fr;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    #title h1 {
+        font-size: 3.5rem;
+    }
+
+    .controls {
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    button {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
